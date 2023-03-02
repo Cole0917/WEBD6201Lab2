@@ -12,6 +12,7 @@ class User {
         this.Username = username
         this.Email = email
         this.Password = password
+        this.ConfirmPassword = confirmPassword
     }
 
     // Accessors and Mutators
@@ -44,10 +45,17 @@ class User {
     }
 
     get Password() {
-        return this.m_firstName
+        return this.m_password
     }
     set Password(password) {
         this.m_password = password
+    }
+
+    get ConfirmPassword() {
+        return this.m_confirmPassword
+    }
+    set ConfirmPassword(confirmPassword) {
+        this.m_confirmPassword = confirmPassword
     }
 }
 
@@ -221,6 +229,29 @@ class User {
 
     function DisplayRegister() {
         document.getElementById("projects").innerHTML = "Projects";
+        RegisterValidate()
+    }
+
+    function ValidateInput(inputFieldID, regularExpression, exception) {
+        let messageArea = $('#messageArea').hide()
+
+        $('#' + inputFieldID).on("blur", function() {
+            let inputText = $(this).val()
+
+            if (!regularExpression.test(inputText)) {
+                $(this).trigger("focus").trigger("select")
+
+                messageArea.addClass("div").text(exception).show()               
+            } else {
+                messageArea.removeAttr("class").hide()
+            }
+        })
+    }
+
+    function RegisterValidate() {
+        let emailAddressPattern = /^[\w-\.]+@([\w-]+\.)+[\w-][\D]{8,20}$/g
+
+        ValidateInput("emailAddress", emailAddressPattern, "Email Error")
     }
 
     
