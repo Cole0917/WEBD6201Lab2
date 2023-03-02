@@ -24,7 +24,7 @@ Date: 2023-02-12
         mainParagraph.setAttribute("id", "MainParagraph")
         mainParagraph.setAttribute("class", "mt-3 container")
 
-        let firstString = "Welcome to our Lab 1 Website for WEBD6201-01! The content of this lab will touch upon DOM Manipulation."
+        let firstString = "Welcome to our Lab 2 Website for WEBD6201-01! The content of this lab will touch upon jQuery and Form Validation"
 
         mainParagraph.textContent = firstString
         
@@ -191,15 +191,9 @@ Date: 2023-02-12
                 break
         }
 
-        // Adds human resources in between about us and contact us
-        // You never said it had to look good
-        let navMenu = document.getElementsByClassName( "navbar-nav" )[0]
-        let contactUs = document.createElement("LI")
-        let humanResources = document.getElementsByClassName("nav-link")[4]
-        contactUs.innerHTML = '<a class="nav-link" href="./contact.html"><i class="fa-solid fa-person"></i> Contact Us</a>'
-        humanResources.innerHTML = '<a class="nav-link" href="./humanResources.html"><i class="fa-solid fa-person"></i> Human Resources</a>'
-        navMenu.append(contactUs)
-
+   
+        
+        // bottom navbar
         let bottomBar = document.createElement('nav')
 
         bottomBar.innerHTML = '&copy CopyRight 2023'
