@@ -1,0 +1,17 @@
+body 
+{
+    background-image: url('https://wallpapercave.com/wp/wp2760733.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #FFFFFF;
+}
+
+#webdevstockimg
+{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+

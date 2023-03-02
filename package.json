@@ -1,0 +1,24 @@
+{
+  "name": "webd6201lab1",
+  "version": "1.0.0",
+  "description": "Lab 1 npm",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cole0917/WEBD6201Lab1.git"
+  },
+  "author": "Cole Biglang-awa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cole0917/WEBD6201Lab1/issues"
+  },
+  "homepage": "https://github.com/Cole0917/WEBD6201Lab1#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.3.0",
+    "bootstrap": "^5.2.3",
+    "jquery": "^3.6.3"
+  }
+}
