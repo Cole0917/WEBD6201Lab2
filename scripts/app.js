@@ -1,7 +1,55 @@
 /* 
 Names: Cole Biglang-awa (100825831) & Nathan Mcquaid (100841457)
-Date: 2023-02-12
+Date: 2023-03-01
 */
+
+// User Class (part g of Lab 2)
+class User {
+    // Constructor
+    constructor(firstName, lastName, username, email, password) {
+        this.FirstName = firstName
+        this.LastName = lastName
+        this.Username = username
+        this.Email = email
+        this.Password = password
+    }
+
+    // Accessors and Mutators
+    get FirstName() {
+        return this.m_firstName
+    }
+    set FirstName(firstName) {
+        this.m_firstName = firstName
+    }
+
+    get LastName() {
+        return this.m_lastName
+    }
+    set Username(lastName) {
+        this.m_lastName = lastName
+    }
+
+    get Username() {
+        return this.m_username
+    }
+    set Username(username) {
+        this.m_username = username
+    }
+
+    get Email() {
+        return this.m_email
+    }
+    set Email(email) {
+        this.m_email = email
+    }
+
+    get Password() {
+        return this.m_firstName
+    }
+    set Password(password) {
+        this.m_password = password
+    }
+}
 
 (function () {
 
@@ -167,6 +215,14 @@ Date: 2023-02-12
         document.getElementById("projects").innerHTML = "Projects";
     }
 
+    function DisplayLogin() {
+        document.getElementById("projects").innerHTML = "Projects";
+    }
+
+    function DisplayRegister() {
+        document.getElementById("projects").innerHTML = "Projects";
+    }
+
     
 
     // Runs all these functions
@@ -174,7 +230,7 @@ Date: 2023-02-12
         console.log("App Started Successfully!")
 
         switch (document.title) {
-            case "Home - WEBD6201 Lab 1":
+            case "Home - WEBD6201 Lab 2":
                 DisplayHome()
                 break
             case "Products - WEBD6201 Lab 1":
@@ -188,6 +244,12 @@ Date: 2023-02-12
                 break
             case "Contact Us - WEBD6201 Lab 1":
                 DisplayContactUs()
+                break
+            case "Login - WEBD6201 Lab 2":
+                DisplayLogin()
+                break
+            case "Register - WEBD6201 Lab 2":
+                DisplayRegister()
                 break
         }
 
