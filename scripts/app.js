@@ -6,7 +6,7 @@ Date: 2023-03-01
 // User Class (part g of Lab 2)
 class User {
     // Constructor
-    constructor(firstName, lastName, username, email, password) {
+    constructor(firstName, lastName, username, email, password, confirmPassword) {
         this.FirstName = firstName
         this.LastName = lastName
         this.Username = username
@@ -26,7 +26,7 @@ class User {
     get LastName() {
         return this.m_lastName
     }
-    set Username(lastName) {
+    set LastName(lastName) {
         this.m_lastName = lastName
     }
 
@@ -56,6 +56,10 @@ class User {
     }
     set ConfirmPassword(confirmPassword) {
         this.m_confirmPassword = confirmPassword
+    }
+
+    toString() {
+        return `First Name is ${ this.FirstName } \n Last Name is ${ this.LastName } \n Email Address is ${ this.Email } \nPassword is ${ this.Password }`
     }
 }
 
@@ -160,12 +164,12 @@ class User {
         secondaryParagraph.setAttribute("class", "mt-3 container")
 
         let tertiaryParagraph = document.createElement("h5")
-        secondaryParagraph.setAttribute("id", "TertiaryParagraph")
-        secondaryParagraph.setAttribute("class", "mt-3 container")
+        tertiaryParagraph.setAttribute("id", "TertiaryParagraph")
+        tertiaryParagraph.setAttribute("class", "mt-3 container")
 
         let quaternaryParagraph = document.createElement("h5")
-        secondaryParagraph.setAttribute("id", "QuaternaryParagraph")
-        secondaryParagraph.setAttribute("class", "mt-3 container")
+        quaternaryParagraph.setAttribute("id", "QuaternaryParagraph")
+        quaternaryParagraph.setAttribute("class", "mt-3 container")
 
  
         let firstString = "Three Skills we offer to our clients: "
@@ -207,7 +211,7 @@ class User {
         secondaryParagraph.setAttribute("class", "mt-3 container")
 
         let firstString = "Cole Biglang-awa (Computer Programming and Analysis: Second Year)"
-        let secondString = "Nathan Mcquaid (Computer Programming and Analysis: Second Year)"
+        let secondString = "Nathan Mcquaid (Computer Programming: Second Year)"
 
         mainParagraph.textContent = firstString
         secondaryParagraph.textContent = secondString
@@ -227,18 +231,46 @@ class User {
         document.getElementById("projects").innerHTML = "Projects";
     }
 
+    let messageArea = $('#messageArea')
     function DisplayRegister() {
         document.getElementById("projects").innerHTML = "Projects";
-        RegisterValidate()
+
+        $('form').submit(function(event) {
+            event.preventDefault()
+          
+            // Get the values of the form elements
+            var firstname = $('input[name="firstName"]').val()
+            var lastname = $('input[name="lastName"]').val()
+            var email = $('input[name="emailAddress"]').val()
+            var password = $('input[name="password"]').val()
+            var confirmPassword = $('input[name="confirmPassword"]').val()
+            var user = new User(firstname, lastname, email, email, password, confirmPassword)
+            console.log(user.toString())
+            RegisterValidate()
+            ValidatePassword(password, confirmPassword, event)
+            
+            // Clear the form
+            $('input[name="firstName"]').val('')
+            $('input[name="lastName"]').val('')
+            $('input[name="emailAddress"]').val('')
+            $('input[name="password"]').val('')
+            $('input[name="confirmPassword"]').val('')
+          })
+    }
+
+    function RegisterValidate() {
+        let emailAddressPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/i
+
+        ValidateInput("emailAddress", emailAddressPattern, "Email Error")
     }
 
     function ValidateInput(inputFieldID, regularExpression, exception) {
-        let messageArea = $('#messageArea').hide()
 
         $('#' + inputFieldID).on("blur", function() {
             let inputText = $(this).val()
 
             if (!regularExpression.test(inputText)) {
+                console.log("email validation failed")
                 $(this).trigger("focus").trigger("select")
 
                 messageArea.addClass("div").text(exception).show()               
@@ -247,13 +279,19 @@ class User {
             }
         })
     }
+    
+    function ValidatePassword(pass1, pass2){
+        $('#password').on("blur", function() {
 
-    function RegisterValidate() {
-        let emailAddressPattern = /^[\w-\.]+@([\w-]+\.)+[\w-][\D]{8,20}$/g
-
-        ValidateInput("emailAddress", emailAddressPattern, "Email Error")
+            if (pass1 !== pass2 || pass1.length < 6){
+                alert("passwords do not match")
+                $(this).trigger("focus").trigger("select")
+                messageArea.addClass("div").text("Password Error").show()               
+            } else {
+                messageArea.removeAttr("class").hide()
+            }
+        })
     }
-
     
 
     // Runs all these functions
