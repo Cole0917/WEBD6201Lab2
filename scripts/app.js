@@ -247,7 +247,7 @@ class User {
             var user = new User(firstname, lastname, email, email, password, confirmPassword)
             console.log(user.toString())
             RegisterValidate()
-            ValidatePassword(password, confirmPassword, event)
+            ValidatePassword(password, confirmPassword)
             
             // Clear the form
             $('input[name="firstName"]').val('')
@@ -259,13 +259,13 @@ class User {
     }
 
     function RegisterValidate() {
-        let emailAddressPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/i
+        let emailAddressPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{8,20}$/i
 
         ValidateInput("emailAddress", emailAddressPattern, "Email Error")
     }
 
     function ValidateInput(inputFieldID, regularExpression, exception) {
-
+        messageArea.hide()
         $('#' + inputFieldID).on("blur", function() {
             let inputText = $(this).val()
 
